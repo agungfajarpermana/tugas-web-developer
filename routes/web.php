@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('biodata')->group(function () {
+    Route::get('/', 'BiodataController@GetDataBio');
+    Route::post('create', 'BiodataController@CreateBio');
+    Route::put('update/{id}', 'BiodataController@UpdateBio');
+    Route::delete('delete/{id}', 'BiodataController@deleteBio');
+});
