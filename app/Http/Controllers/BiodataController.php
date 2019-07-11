@@ -38,10 +38,10 @@ class BiodataController extends Controller
                 return response()->json(['status'=>true, 'msg'=>'Berhasil Ditambahkan!', 'data'=>$data]);
             }catch(\Exception $e){
                 DB::rollback();
-                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat memasukan data biodata!']);
+                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat memasukan data biodata!', 'error' => $e->getMessage()]);
             }
         }catch(\Exception $e){
-            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!']);
+            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!', 'error' => $e->getMessage()]);
         }
     }
 
@@ -66,10 +66,10 @@ class BiodataController extends Controller
                 return response()->json(['status'=>true, 'msg'=>'Berhasil Diubah!', 'data'=>$data]);
             } catch (\Exception $e) {
                 DB::rollback();
-                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat mengubah data biodata!']);
+                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat mengubah data biodata!', 'error' => $e->getMessage()]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!']);
+            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!', 'error' => $e->getMessage()]);
         }
     }
 
@@ -89,10 +89,10 @@ class BiodataController extends Controller
                 return response()->json(['status'=>true, 'msg'=>'Berhasil Dihapus!', 'data'=>$data]);
             } catch (\Exception $e) {
                 DB::rollback();
-                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat menghapus data biodata!']);
+                return response()->json(['status'=>false, 'msg'=>'Ada masalah saat menghapus data biodata!', 'error' => $e->getMessage()]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!']);
+            return response()->json(['status'=>false, 'msg'=>'Koneksi Ke Database Terputus!', 'error' => $e->getMessage()]);
         }
     }
 }
